@@ -36,7 +36,7 @@ function Hero() {
             When life<br />feels heavy,<br />no family should<br />carry it alone.
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-lg leading-relaxed">
-            Counselling, support, and belonging for Ottawa's Muslim community — with compassion and dignity.
+            Counselling, care, and practical support for Ottawa&apos;s Muslim community, delivered with compassion and dignity.
           </p>
           <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 w-full">
             <Link to="/get-help" className="bg-brand-secondary hover:bg-brand-secondary-hover text-brand-darker px-8 py-4 rounded-full font-medium transition-colors text-center w-full sm:w-auto">
@@ -45,6 +45,17 @@ function Hero() {
             <Link to="/programs" className="bg-white/10 hover:bg-white/20 border border-white/30 text-white px-8 py-4 rounded-full font-medium transition-colors backdrop-blur-sm text-center w-full sm:w-auto">
               Explore Programs
             </Link>
+          </div>
+          <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/80">
+            <span className="rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-sm">
+              Confidential support
+            </span>
+            <span className="rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-sm">
+              Faith-sensitive care
+            </span>
+            <span className="rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-sm">
+              Community-rooted programs
+            </span>
           </div>
         </div>
       </div>
@@ -479,21 +490,21 @@ function ServicesSection() {
     {
       icon: <Brain size={18} className="text-brand-secondary" />,
       title: "Clinical Counselling",
-      desc: "Faith-sensitive therapy for individuals, couples, and families.",
+      desc: "Faith-sensitive counselling that helps individuals, couples, and families move forward with clarity and support.",
       img: "/assets/Counselling image.jpg",
       link: "/counselling"
     },
     {
       icon: <Heart size={18} className="text-brand-secondary" />,
       title: "Food Security",
-      desc: "Discreet, dignified food bank and emergency support.",
+      desc: "Dignified food and emergency support that helps families regain stability without added stress.",
       img: "/assets/Food Security images.hero.jpg",
       link: "/get-help"
     },
     {
       icon: <Users size={18} className="text-brand-secondary" />,
       title: "Community Programs",
-      desc: "Youth mentorship, seniors connection, and family support.",
+      desc: "Programs that strengthen belonging, connection, and practical support across generations.",
       img: "/assets/comunity1.jpeg",
       link: "/programs"
     }
@@ -504,6 +515,9 @@ function ServicesSection() {
       <div className="max-w-7xl mx-auto px-6 mb-12 text-center">
         <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-4 block">Our Core Pillars</span>
         <h2 className="font-serif text-4xl md:text-5xl text-brand-darker">How we support the community.</h2>
+        <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-gray-600">
+          Each service is designed to remove barriers, restore stability, and help families access the right support with confidence.
+        </p>
       </div>
       <div className="relative">
         <div className="grid grid-cols-1 md:grid-cols-3">

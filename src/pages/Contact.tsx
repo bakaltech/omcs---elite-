@@ -106,7 +106,10 @@ export function Contact() {
             {/* Contact Form */}
             <div className="bg-brand-light/30 p-8 md:p-12 rounded-[2rem] border border-gray-100 h-fit">
               <h3 className="font-serif text-3xl text-brand-darker mb-8">Send an inquiry</h3>
-              
+              <p className="mb-6 text-gray-600 font-light leading-relaxed">
+                Direct outreach works best while our online inquiry form is being finalized. Share your details below if you would like to see the intended experience, or email our team directly to start the conversation today.
+              </p>
+
               <form className="space-y-6" onSubmit={(e) => e.preventDefault()} noValidate>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -180,12 +183,12 @@ export function Contact() {
                   ></textarea>
                 </div>
 
-                <button 
-                  type="submit"
-                  className="w-full bg-brand-darker hover:bg-brand-primary text-white hover:text-brand-darker font-medium py-4 rounded-xl transition-colors duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-secondary/50"
+                <a
+                  href="mailto:info@omcs.ca?subject=General%20Inquiry"
+                  className="flex w-full items-center justify-center rounded-xl bg-brand-darker py-4 font-medium text-white transition-colors duration-300 hover:bg-brand-primary hover:text-brand-darker focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-secondary/50"
                 >
-                  Send Message
-                </button>
+                  Email Our Team
+                </a>
               </form>
             </div>
 

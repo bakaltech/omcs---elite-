@@ -19,14 +19,14 @@ export function Volunteer() {
     {
       title: "Eid Hamper Packing",
       badge: "Seasonal",
-      date: "March – April (before Eid)",
+      date: "March-April (before Eid)",
       desc: "Help assemble and deliver food hampers to families in need. Flexible shifts available."
     },
     {
       title: "Community Iftar",
       badge: "Ramadan",
       date: "Evenings during Ramadan",
-      desc: "Assist with setup, serving, and cleanup at our community iftars. Volunteer slots are 3–4 hours."
+      desc: "Assist with setup, serving, and cleanup at our community iftars. Volunteer slots are 3-4 hours."
     },
     {
       title: "Youth Mentor",

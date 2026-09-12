@@ -3,21 +3,75 @@ import { PageHeader } from '../components/PageHeader';
 import { motion } from 'motion/react';
 import { Heart, ArrowRight, Shield, Globe, Users } from 'lucide-react';
 import { ASSETS, getImageUrl } from '../assets';
+import { Link } from 'react-router-dom';
+import { SlideOver } from '../components/SlideOver';
+
+function DonationSupportPanel({
+  amountLabel,
+  frequency,
+  onClose,
+}: {
+  amountLabel: string;
+  frequency: 'one-time' | 'monthly';
+  onClose: () => void;
+}) {
+  return (
+    <div className="space-y-6">
+      <div className="rounded-2xl border border-brand-secondary/20 bg-brand-light/40 p-5">
+        <p className="text-xs font-semibold uppercase tracking-[0.24em] text-brand-primary">Selected Gift</p>
+        <p className="mt-3 font-serif text-3xl text-brand-darker">
+          {amountLabel} <span className="text-lg font-sans text-gray-500">{frequency === 'monthly' ? 'monthly' : 'one-time'}</span>
+        </p>
+      </div>
+
+      <div className="space-y-3 text-gray-600">
+        <p>
+          Online donation processing is currently being finalized. If you would like to proceed with this gift, our team can help you complete it directly.
+        </p>
+        <p>
+          We can walk you through giving options, answer tax receipt questions, and help coordinate larger or recurring gifts.
+        </p>
+      </div>
+
+      <div className="grid gap-3">
+        <Link
+          to="/contact"
+          onClick={onClose}
+          className="inline-flex items-center justify-center gap-2 rounded-full bg-brand-darker px-6 py-3.5 font-medium text-white transition-colors hover:bg-brand-primary"
+        >
+          Contact Our Team <ArrowRight size={18} />
+        </Link>
+        <a
+          href="mailto:info@omcs.ca?subject=Donation%20Inquiry"
+          className="inline-flex items-center justify-center rounded-full border border-gray-200 px-6 py-3.5 font-medium text-brand-darker transition-colors hover:border-brand-secondary hover:text-brand-primary"
+        >
+          Email Donation Inquiry
+        </a>
+      </div>
+
+      <p className="text-sm text-gray-500">
+        If you are preparing a corporate, legacy, or wire transfer gift, please mention that in your message so we can direct you to the right person.
+      </p>
+    </div>
+  );
+}
 
 function DonationWidget() {
   const [frequency, setFrequency] = useState<'one-time' | 'monthly'>('one-time');
   const [amount, setAmount] = useState<number | 'custom'>(100);
   const [customAmount, setCustomAmount] = useState<string>("");
+  const [isSupportPanelOpen, setIsSupportPanelOpen] = useState(false);
 
   const amounts = [50, 100, 250, 500];
+  const amountLabel = amount === 'custom' ? `$${customAmount || 'Custom'}` : `$${amount}`;
 
   const handleDonate = (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, this would redirect to Stripe/PayPal
-    alert("This would redirect to the payment processor.");
+    setIsSupportPanelOpen(true);
   };
 
   return (
+    <>
     <div className="bg-white p-8 md:p-12 rounded-[2.5rem] shadow-2xl border border-gray-100 relative overflow-hidden">
       {/* Decorative background */}
       <div className="absolute top-0 right-0 w-64 h-64 bg-brand-secondary/10 rounded-full blur-3xl -translate-y-1/2 translate-x-1/2 pointer-events-none"></div>
@@ -97,15 +151,23 @@ function DonationWidget() {
             type="submit"
             className="w-full bg-brand-darker text-white hover:bg-brand-secondary hover:text-brand-darker py-5 rounded-full font-medium text-lg transition-colors flex items-center justify-center gap-2 group"
           >
-            Donate Now <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            Start Your Gift <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
           </button>
           
           <p className="text-center text-xs text-gray-400 mt-6 flex items-center justify-center gap-1">
-            <Shield size={12} /> Secure payment processing. Tax receipts issued instantly.
+            <Shield size={12} /> Online donation processing is being finalized. Our team can help you arrange your gift today.
           </p>
         </form>
       </div>
     </div>
+    <SlideOver
+      isOpen={isSupportPanelOpen}
+      onClose={() => setIsSupportPanelOpen(false)}
+      title="Complete Your Donation"
+    >
+      <DonationSupportPanel amountLabel={amountLabel} frequency={frequency} onClose={() => setIsSupportPanelOpen(false)} />
+    </SlideOver>
+    </>
   );
 }
 

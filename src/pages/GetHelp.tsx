@@ -13,17 +13,17 @@ function AnatomyOfACall() {
     {
       numeral: "02",
       title: "The Safe Space",
-      desc: "Our intake coordinator listens without judgment. We assess your needs with deep cultural empathy."
+      desc: "Our team reviews your request with care and cultural understanding, so you do not have to explain everything twice."
     },
     {
       numeral: "03",
       title: "The Match",
-      desc: "We pair you with the exact right program, therapist, or resource tailored to your specific situation."
+      desc: "We guide you toward the most appropriate program, therapist, or next step based on what support is available."
     },
     {
       numeral: "04",
       title: "The Journey",
-      desc: "You begin receiving support. We check in regularly to ensure you are getting the care you deserve."
+      desc: "When the fit is right, we help you move into the next step and keep communication clear along the way."
     }
   ];
 
@@ -41,7 +41,7 @@ function AnatomyOfACall() {
             The anatomy of reaching out.
           </h2>
           <p className="text-xl text-gray-600 font-light max-w-2xl">
-            Anxiety thrives in the unknown. Here is exactly what happens when you press "Submit" or pick up the phone.
+            Reaching out can feel hard when you do not know what to expect. Here is how support is typically coordinated.
           </p>
         </div>
 
@@ -123,13 +123,27 @@ function ConversationalForm() {
           </div>
           <h3 className="font-serif text-3xl text-brand-darker mb-4">You are not alone.</h3>
           <p className="text-gray-600 font-light text-lg mb-8 max-w-md mx-auto">
-            We have received your message. Our intake coordinator will reach out to you within 24 hours. Take a deep breath—you've taken the hardest step.
+            Thank you for taking the first step. Online intake is being finalized, so for timely support please call or email our team directly and we will guide you from there.
           </p>
-          <button 
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            <a
+              href="tel:6131234567"
+              className="inline-flex items-center justify-center rounded-full bg-brand-darker px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-brand-primary"
+            >
+              Call 613-123-4567
+            </a>
+            <a
+              href="mailto:help@omcs.ca?subject=Support%20Request"
+              className="inline-flex items-center justify-center rounded-full border border-brand-secondary px-6 py-3 text-sm font-medium text-brand-darker transition-colors hover:bg-brand-secondary/10"
+            >
+              Email help@omcs.ca
+            </a>
+          </div>
+          <button
             onClick={() => { setIsSubmitted(false); setStep(1); setSupportType(""); }}
-            className="text-brand-secondary font-medium hover:text-brand-primary transition-colors"
+            className="mt-6 text-brand-secondary font-medium hover:text-brand-primary transition-colors"
           >
-            Submit another request
+            Start again
           </button>
         </div>
       </motion.div>
@@ -181,7 +195,10 @@ function ConversationalForm() {
                 className="flex-grow"
               >
                 <h2 className="font-serif text-3xl text-brand-darker mb-3">Let's start with the basics.</h2>
-                <p className="text-gray-500 font-light mb-10">This information is strictly confidential.</p>
+                <p className="text-gray-500 font-light mb-4">Share only what you are comfortable sharing.</p>
+                <div className="mb-10 rounded-2xl border border-brand-secondary/20 bg-brand-secondary/5 px-4 py-4 text-sm leading-7 text-gray-600">
+                  Online intake is currently being finalized. This form helps communicate the experience, but the fastest way to connect today is still by phone or email.
+                </div>
                 
                 <div className="space-y-8">
                   <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -321,7 +338,7 @@ export function GetHelp() {
     <div className="bg-brand-light/30">
       <PageHeader 
         title="Get Help" 
-        description="You don't have to face your struggles alone. We are here to provide immediate support, guidance, and resources."
+        description="You do not have to navigate hardship alone. OMCS helps connect individuals and families to support, guidance, and trusted next steps."
         image="https://images.unsplash.com/photo-1469571486292-0ba58a3f068b?q=80&w=2000&auto=format&fit=crop"
       />
       
@@ -367,7 +384,7 @@ export function GetHelp() {
                   We are ready to listen.
                 </h2>
                 <p className="text-lg text-gray-600 font-light mb-12">
-                  Whether you are in crisis or just looking for guidance, our team is here to provide a safe, confidential space.
+                  Whether you need urgent guidance or are looking for the right next step, our team is here to help you connect to support with care and discretion.
                 </p>
 
                 <div className="space-y-10">
@@ -376,9 +393,9 @@ export function GetHelp() {
                       <Phone className="text-brand-darker group-hover:text-brand-secondary transition-colors" size={20} />
                     </div>
                     <div>
-                      <h3 className="text-sm font-medium tracking-widest uppercase text-gray-400 mb-1">Crisis Helpline</h3>
+                      <h3 className="text-sm font-medium tracking-widest uppercase text-gray-400 mb-1">Phone Support</h3>
                       <a href="tel:6131234567" className="text-2xl font-serif text-brand-darker hover:text-brand-secondary transition-colors">613-123-4567</a>
-                      <p className="text-gray-500 font-light text-sm mt-2">Available 24/7 for immediate support.</p>
+                      <p className="text-gray-500 font-light text-sm mt-2">Call to connect with our team and be guided to the appropriate next step.</p>
                     </div>
                   </div>
 
@@ -389,7 +406,7 @@ export function GetHelp() {
                     <div>
                       <h3 className="text-sm font-medium tracking-widest uppercase text-gray-400 mb-1">General Inquiries</h3>
                       <a href="mailto:help@omcs.ca" className="text-xl text-brand-darker hover:text-brand-secondary transition-colors">help@omcs.ca</a>
-                      <p className="text-gray-500 font-light text-sm mt-2">For non-urgent support and info.</p>
+                      <p className="text-gray-500 font-light text-sm mt-2">For non-urgent requests, referrals, and follow-up questions.</p>
                     </div>
                   </div>
 
@@ -398,11 +415,11 @@ export function GetHelp() {
                       <MapPin className="text-brand-darker group-hover:text-brand-secondary transition-colors" size={20} />
                     </div>
                     <div>
-                      <h3 className="text-sm font-medium tracking-widest uppercase text-gray-400 mb-1">Drop-in Center</h3>
-                      <p className="text-xl text-brand-darker">123 Community Way<br/>Ottawa, ON K1A 0B1</p>
+                      <h3 className="text-sm font-medium tracking-widest uppercase text-gray-400 mb-1">Serving Ottawa</h3>
+                      <p className="text-xl text-brand-darker">Ottawa, ON</p>
                       <div className="flex items-center gap-2 text-sm text-gray-500 mt-2 font-light">
                         <Clock size={14} />
-                        <span>Mon-Fri: 9:00 AM - 5:00 PM</span>
+                        <span>Support is coordinated through phone, email, and scheduled appointments.</span>
                       </div>
                     </div>
                   </div>

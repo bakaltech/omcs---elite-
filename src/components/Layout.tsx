@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, Outlet, useLocation } from 'react-router-dom';
-import { Menu, X, Facebook, Instagram, Youtube, MapPin, Phone, Mail, ArrowUp, ArrowRight } from 'lucide-react';
+import { Menu, X, MapPin, Phone, Mail, ArrowUp, ArrowRight } from 'lucide-react';
 import { Logo } from './Logo';
 import { AnimatePresence, motion } from 'motion/react';
 import { ErrorBoundary } from './ErrorBoundary';
@@ -128,6 +128,7 @@ function Navbar() {
 }
 
 function Footer() {
+  const socialLabels = ['Facebook', 'Instagram', 'YouTube'];
   const footerLinks = [
     { to: '/about', label: 'About Us' },
     { to: '/counselling', label: 'Clinical Counselling' },
@@ -166,7 +167,7 @@ function Footer() {
 
               <div className="mt-8 inline-flex flex-col rounded-2xl border border-white/10 bg-black/15 px-5 py-4">
                 <span className="text-[0.68rem] uppercase tracking-[0.28em] text-gray-500">Registered Charity</span>
-                <span className="mt-2 font-mono text-lg tracking-[0.08em] text-white">12345 6789 RR0001</span>
+                <span className="mt-2 text-sm leading-7 text-white">Official charity details available upon request.</span>
               </div>
             </div>
 
@@ -207,35 +208,31 @@ function Footer() {
                 <p className="text-[0.7rem] font-medium uppercase tracking-[0.28em] text-gray-500">Stay Connected</p>
                 <h4 className="mt-4 font-serif text-2xl text-white">Community updates, thoughtfully delivered.</h4>
                 <p className="mt-4 text-sm leading-7 text-gray-400">
-                  Join our newsletter for program highlights, upcoming events, and stories of impact across Ottawa.
+                  Reach out to receive program highlights, upcoming events, and stories of impact across Ottawa while our email signup is being finalized.
                 </p>
 
-                <form className="mt-6 relative" onSubmit={(e) => e.preventDefault()}>
-                  <input
-                    type="email"
-                    placeholder="Email address"
-                    className="w-full rounded-full border border-white/10 bg-white/5 py-3.5 pl-5 pr-14 text-sm text-white placeholder:text-gray-500 focus:outline-none focus:border-brand-secondary transition-colors"
-                    required
-                  />
-                  <button
-                    type="submit"
-                    className="absolute right-1.5 top-1.5 bottom-1.5 aspect-square rounded-full bg-brand-secondary text-brand-darker flex items-center justify-center transition-colors hover:bg-brand-secondary-hover"
-                    aria-label="Subscribe"
-                  >
-                    <ArrowRight size={16} />
-                  </button>
-                </form>
+                <Link
+                  to="/contact"
+                  className="mt-6 inline-flex w-full items-center justify-center gap-2 rounded-full bg-brand-secondary px-5 py-3.5 text-sm font-medium text-brand-darker transition-colors hover:bg-brand-secondary-hover"
+                >
+                  Contact Us for Updates <ArrowRight size={16} />
+                </Link>
 
-                <div className="mt-6 flex gap-3">
-                  <a href="#" aria-label="Facebook" className="w-11 h-11 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-gray-400 transition-all hover:bg-brand-secondary hover:text-brand-darker hover:border-brand-secondary">
-                    <Facebook size={18} />
-                  </a>
-                  <a href="#" aria-label="Instagram" className="w-11 h-11 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-gray-400 transition-all hover:bg-brand-secondary hover:text-brand-darker hover:border-brand-secondary">
-                    <Instagram size={18} />
-                  </a>
-                  <a href="#" aria-label="YouTube" className="w-11 h-11 rounded-full border border-white/10 bg-white/5 flex items-center justify-center text-gray-400 transition-all hover:bg-brand-secondary hover:text-brand-darker hover:border-brand-secondary">
-                    <Youtube size={18} />
-                  </a>
+                <div className="mt-6">
+                  <p className="text-[0.7rem] font-medium uppercase tracking-[0.24em] text-gray-500">Social Channels</p>
+                  <div className="mt-3 flex flex-wrap gap-2">
+                    {socialLabels.map((label) => (
+                      <span
+                        key={label}
+                        className="rounded-full border border-white/10 bg-white/5 px-3 py-2 text-xs font-medium text-gray-400"
+                      >
+                        {label}
+                      </span>
+                    ))}
+                  </div>
+                  <p className="mt-3 text-sm leading-6 text-gray-400">
+                    Official social links can be added as soon as account details are confirmed.
+                  </p>
                 </div>
               </div>
 
@@ -251,7 +248,7 @@ function Footer() {
 
         <div className="mt-8 flex flex-col gap-4 border-t border-white/10 pt-6 text-sm text-gray-500 md:flex-row md:items-center md:justify-between">
           <div className="flex flex-col gap-3 md:flex-row md:items-center md:gap-6">
-            <span>© {new Date().getFullYear()} OMCS. All rights reserved.</span>
+            <span>&copy; {new Date().getFullYear()} OMCS. All rights reserved.</span>
             <div className="flex items-center gap-4">
               <Link to="/privacy" className="transition-colors hover:text-white">Privacy Policy</Link>
               <span className="text-white/15">/</span>
