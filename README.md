@@ -18,3 +18,11 @@ View your app in AI Studio: https://ai.studio/apps/60c89b44-405d-4cce-a28b-4347d
 2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
 3. Run the app:
    `npm run dev`
+
+Open the URL printed by Vite (normally `http://localhost:3000/`). Do not
+use a static server such as VS Code Live Server to open `index.html`: it
+serves `src/main.tsx` without Vite's transformation and can return the
+`application/octet-stream` MIME type that browsers reject for module scripts.
+
+GitHub Pages is deployed by [.github/workflows/deploy-pages.yml](.github/workflows/deploy-pages.yml)
+after pushes to `main`. The workflow builds the app before publishing it.

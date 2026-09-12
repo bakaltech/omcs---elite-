@@ -9,20 +9,18 @@
     <meta property="og:title" content="OMCS - Ottawa Muslim Community Services" />
     <meta property="og:description" content="Providing counselling, support, and community programs to empower the Ottawa Muslim community." />
     <meta property="og:type" content="website" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
-  </head>
-  <body>
-    <div id="root"></div>
     <script>
-      // Defensive stubs for third-party/extension content-scripts that expect
-      // certain globals to exist. These no-ops prevent uncaught ReferenceErrors
-      // caused by browser extensions (e.g. GmailAcrobat) calling missing hooks.
+      // Define extension hooks before document-start content scripts can call them.
       window.showOneChild = window.showOneChild || function(){};
       window.GmailAcrobatFteCoachmark = window.GmailAcrobatFteCoachmark || {};
     </script>
+  </head>
+  <body>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
-
