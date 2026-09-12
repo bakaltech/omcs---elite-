@@ -1,67 +1,165 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Heart, MessageSquare, Users, ChevronLeft, ChevronRight, Plus, Minus, Globe, Brain, Landmark, ShieldCheck, CircleDashed, Target } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { ASSETS, getImageUrl } from '../assets';
-import { AnimatePresence, motion } from 'motion/react';
+import { AnimatePresence, motion, useScroll, useTransform } from 'motion/react';
 import { MethodologySection } from './Counselling';
 import { SlideOver } from '../components/SlideOver';
 import { IntakeForm } from '../components/IntakeForm';
+import { SEO } from '../components/SEO';
+
+function FloatingParticles() {
+  const [particles, setParticles] = useState<Array<{ id: number, x: number, y: number, size: number, duration: number, delay: number }>>([]);
+
+  useEffect(() => {
+    const newParticles = Array.from({ length: 25 }).map((_, i) => ({
+      id: i,
+      x: Math.random() * 100,
+      y: Math.random() * 100, 
+      size: Math.random() * 4 + 1,
+      duration: Math.random() * 15 + 15,
+      delay: Math.random() * 10
+    }));
+    setParticles(newParticles);
+  }, []);
+
+  return (
+    <div className="absolute inset-0 z-[1] overflow-hidden pointer-events-none mix-blend-screen">
+      {particles.map(p => (
+        <motion.div
+          key={p.id}
+          className="absolute rounded-full bg-[#d2a94c]"
+          style={{
+            left: `${p.x}%`,
+            top: `${p.y}%`,
+            width: `${p.size}px`,
+            height: `${p.size}px`,
+            filter: `blur(${p.size > 2 ? 1 : 0}px)`
+          }}
+          animate={{
+            y: [0, -200 - p.duration * 5],
+            opacity: [0, 0.6, 0]
+          }}
+          transition={{
+            duration: p.duration,
+            repeat: Infinity,
+            delay: p.delay,
+            ease: "linear"
+          }}
+        />
+      ))}
+    </div>
+  );
+}
 
 function Hero() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start start", "end start"]
+  });
+  const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
+  
+  const heroImages = [
+    "/assets/Muslim%20girls%20holding%20each%20other%20and%20smiling,%20hero%20image1.jpg",
+    "/assets/eid.jpg",
+    "/assets/family%20under%20sunset.jpg"
+  ];
+  const [currentSlide, setCurrentSlide] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % heroImages.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section className="relative min-h-screen flex items-center pt-24 pb-12 overflow-hidden">
+    <section ref={ref} className="relative min-h-screen flex items-center pt-24 pb-32 md:pb-40 overflow-hidden bg-brand-darker">
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
-        <img 
-          src={getImageUrl("/assets/Muslim%20girls%20holding%20each%20other%20and%20smiling,%20hero%20image1.jpg", 2000)} 
-          alt="Mother hugging child" 
-          loading="eager"
-          className="w-full h-full object-cover object-[75%_center] md:object-[85%_center]"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-brand-darker via-brand-darker/95 to-black/30"></div>
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-darker via-brand-darker/50 to-transparent"></div>
+        <AnimatePresence mode="popLayout">
+          <motion.div
+            key={currentSlide}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 2, ease: "easeInOut" }}
+            className="absolute inset-0"
+          >
+            <motion.img 
+              style={{ y }}
+              initial={{ scale: 1 }}
+              animate={{ scale: 1.15 }}
+              transition={{ duration: 10, ease: "linear" }}
+              src={getImageUrl(heroImages[currentSlide], 2000)} 
+              alt="Hero Background" 
+              loading="eager"
+              className="w-full h-[120%] object-cover object-[75%_center] md:object-[50%_center] -top-[10%] relative origin-center"
+            />
+          </motion.div>
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-gradient-to-r from-brand-darker via-brand-darker/95 to-brand-primary/20 mix-blend-multiply border-none z-0"></div>
+        <div className="absolute inset-0 bg-gradient-to-t from-brand-darker via-brand-darker/50 to-transparent z-0"></div>
+        <div className="absolute inset-0 bg-brand-secondary/5 mix-blend-overlay z-0"></div>
       </div>
+      
+      <FloatingParticles />
 
       <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-10 w-full flex">
         {/* Vertical Text */}
         <div className="hidden md:flex flex-col items-center justify-center mr-12 opacity-50 text-white">
-          <span className="writing-vertical-rl rotate-180 text-xs tracking-[0.3em] uppercase font-medium">
-            FAITH &bull; HEALING &bull; GOOD &bull; GROWTH &bull; COMMUNITY
+          <span className="writing-vertical-rl rotate-180 text-[0.65rem] tracking-[0.4em] uppercase font-semibold">
+            Compassion &bull; Dignity &bull; Wellness &bull; Belonging
           </span>
         </div>
 
         {/* Content */}
-        <div className="max-w-2xl">
-          <h1 className="font-serif text-5xl md:text-7xl lg:text-8xl leading-[1.1] mb-6 text-white">
+        <div className="max-w-2xl mt-8">
+          <div className="mb-8 flex flex-wrap items-center gap-4 text-xs font-bold uppercase tracking-[0.28em] text-white/70">
+            <span>Faith</span>
+            <span className="w-1 h-1 rounded-full bg-brand-secondary/50"></span>
+            <span>Healing</span>
+            <span className="w-1 h-1 rounded-full bg-brand-secondary/50"></span>
+            <span>Care</span>
+            <span className="w-1 h-1 rounded-full bg-brand-secondary/50"></span>
+            <span>Community</span>
+          </div>
+          <h1 className="font-serif text-5xl sm:text-6xl lg:text-[5.35rem] leading-[0.92] mb-7 text-[#f7efe3] font-bold">
             When life<br />feels heavy,<br />no family should<br />carry it alone.
           </h1>
-          <p className="text-lg md:text-xl text-gray-300 mb-10 max-w-lg leading-relaxed">
-            Counselling, care, and practical support for Ottawa&apos;s Muslim community, delivered with compassion and dignity.
+          <p className="text-lg md:text-[1.32rem] text-white/80 mb-10 max-w-xl leading-8">
+            Counselling, food support, family services, and community programs for Ottawa's Muslim community, delivered with compassion, privacy, and dignity.
           </p>
-          <div className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4 sm:gap-6 w-full">
-            <Link to="/get-help" className="bg-brand-secondary hover:bg-brand-secondary-hover text-brand-darker px-8 py-4 rounded-full font-medium transition-colors text-center w-full sm:w-auto">
+          <div className="flex flex-col sm:flex-row gap-4 w-full">
+            <Link to="/get-help" className="bg-[#d2a94c] hover:bg-[#e0bb6b] text-[#17120d] px-7 py-4 rounded-full font-semibold transition-colors text-center w-full sm:w-auto">
               Get Help Now
             </Link>
-            <Link to="/programs" className="bg-white/10 hover:bg-white/20 border border-white/30 text-white px-8 py-4 rounded-full font-medium transition-colors backdrop-blur-sm text-center w-full sm:w-auto">
+            <Link to="/programs" className="bg-white/10 hover:bg-white text-white hover:text-[#11241d] border border-white/20 px-7 py-4 rounded-full font-semibold transition-colors backdrop-blur-sm text-center w-full sm:w-auto">
               Explore Programs
             </Link>
-          </div>
-          <div className="mt-8 flex flex-wrap gap-3 text-sm text-white/80">
-            <span className="rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-sm">
-              Confidential support
-            </span>
-            <span className="rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-sm">
-              Faith-sensitive care
-            </span>
-            <span className="rounded-full border border-white/15 bg-white/10 px-4 py-2 backdrop-blur-sm">
-              Community-rooted programs
-            </span>
           </div>
         </div>
       </div>
       
+      {/* Interactive Pagination Dots */}
+      <div className="absolute bottom-8 left-0 right-0 z-20 flex justify-center gap-3">
+        {heroImages.map((_, idx) => (
+          <button
+            key={idx}
+            onClick={() => setCurrentSlide(idx)}
+            className={`transition-all duration-500 rounded-full ${
+              currentSlide === idx 
+                ? 'w-8 h-2 bg-brand-secondary' 
+                : 'w-2 h-2 bg-white/40 hover:bg-white/70'
+            }`}
+            aria-label={`Go to slide ${idx + 1}`}
+          />
+        ))}
+      </div>
+
       {/* Scroll Indicator */}
-      <div className="absolute bottom-12 right-12 hidden md:flex flex-col items-center gap-2 text-white/50 animate-bounce">
+      <div className="absolute bottom-24 md:bottom-28 right-12 hidden md:flex flex-col items-center gap-2 text-white/50 animate-bounce">
         <span className="text-[0.6rem] tracking-[0.2em] uppercase">Scroll</span>
         <ArrowRight size={14} className="rotate-90" />
       </div>
@@ -364,6 +462,14 @@ const featuredStories = [
 
 function StorySection() {
   const [currentIndex, setCurrentIndex] = useState(0);
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+
+  const scale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 1.05]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0, 1, 1, 0]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -378,9 +484,9 @@ function StorySection() {
   const story = featuredStories[currentIndex];
 
   return (
-    <section className="py-24 bg-brand-light relative overflow-hidden flex items-center min-h-[700px]">
+    <section ref={ref} className="py-24 bg-brand-light relative overflow-hidden flex items-center min-h-[700px]">
       {/* Left Bleed Image (Desktop) */}
-      <div className="hidden md:block absolute top-12 bottom-12 left-0 w-[55%] lg:w-[60%] z-0">
+      <motion.div style={{ scale, opacity }} className="hidden md:block absolute top-12 bottom-12 left-0 w-[55%] lg:w-[60%] z-0 origin-left">
         <AnimatePresence mode="wait">
           <motion.img 
             key={story.id}
@@ -393,7 +499,7 @@ function StorySection() {
             className="absolute inset-0 w-full h-full object-cover rounded-r-3xl shadow-2xl"
           />
         </AnimatePresence>
-      </div>
+      </motion.div>
 
       <div className="w-full max-w-7xl mx-auto px-0 md:px-6 relative z-10">
         <div className="flex flex-col md:flex-row items-center justify-end">
@@ -471,17 +577,111 @@ function StorySection() {
 
 function ImpactSection() {
   return (
-    <section className="py-32 bg-brand-darker text-center px-6 text-white relative overflow-hidden">
-      <div className="absolute inset-0 opacity-5 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-brand-secondary via-brand-darker to-brand-darker"></div>
-      <div className="relative z-10">
-        <p className="text-xs font-bold tracking-[0.2em] uppercase text-gray-400 mb-8">Making Real Impact Every Day</p>
-        <div className="font-serif text-7xl md:text-8xl lg:text-9xl text-brand-secondary mb-6 drop-shadow-lg">
-          22,000<span className="text-5xl md:text-6xl align-top">+</span>
+    <section className="py-20 md:py-28 bg-[#161b18] text-center border-y border-white/5 px-6 relative overflow-hidden" id="impact-stats">
+      <div className="absolute inset-0 bg-brand-dark opacity-10 mix-blend-overlay"></div>
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="max-w-3xl mx-auto">
+          <p className="text-xs font-semibold tracking-[0.32em] uppercase text-[#d2a94c] mb-4">Making Real Impact Every Day</p>
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 tracking-tight">Empowering Communities.</h2>
+          <p className="text-white/70 max-w-xl mx-auto text-lg leading-relaxed">Because relief should arrive before despair deepens. Here is a glimpse of what we've achieved together.</p>
         </div>
-        <p className="text-2xl md:text-3xl font-serif mb-4 text-white">meals delivered this year.</p>
-        <p className="text-gray-400">Because relief should arrive before despair deepens.</p>
+        
+        <div className="mt-20 md:mt-32 grid grid-cols-2 md:grid-cols-4 gap-12 md:gap-8 max-w-6xl mx-auto items-center justify-center">
+          <div className="flex flex-col items-center justify-center">
+            <div className="flex items-baseline">
+              <span 
+                className="text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter text-transparent bg-clip-text bg-cover bg-center drop-shadow-2xl select-none"
+                style={{ backgroundImage: `url('/assets/ramadan8.jpg')` }}
+              >
+                15K
+              </span>
+              <span className="text-5xl md:text-7xl lg:text-[6.5rem] font-bold text-[#d2a94c] drop-shadow-[0_0_25px_rgba(210,169,76,0.5)] ml-1 select-none">
+                +
+              </span>
+            </div>
+            <p className="mt-4 text-lg md:text-xl text-white font-medium">Meals Delivered</p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <div className="flex items-baseline">
+              <span 
+                className="text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter text-transparent bg-clip-text bg-cover bg-center drop-shadow-2xl select-none"
+                style={{ backgroundImage: `url('/assets/comunity1.jpeg')` }}
+              >
+                500
+              </span>
+              <span className="text-5xl md:text-7xl lg:text-[6.5rem] font-bold text-[#d2a94c] drop-shadow-[0_0_25px_rgba(210,169,76,0.5)] ml-1 select-none">
+                +
+              </span>
+            </div>
+            <p className="mt-4 text-lg md:text-xl text-white font-medium">Programs & Events</p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <div className="flex items-baseline">
+              <span 
+                className="text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter text-transparent bg-clip-text bg-cover bg-center drop-shadow-2xl select-none"
+                style={{ backgroundImage: `url('/assets/eid11.jpg')` }}
+              >
+                40
+              </span>
+              <span className="text-5xl md:text-7xl lg:text-[6.5rem] font-bold text-[#d2a94c] drop-shadow-[0_0_25px_rgba(210,169,76,0.5)] ml-1 select-none">
+                +
+              </span>
+            </div>
+            <p className="mt-4 text-lg md:text-xl text-white font-medium">Community Partners</p>
+          </div>
+          <div className="flex flex-col items-center justify-center">
+            <div className="flex items-baseline">
+              <span 
+                className="text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter text-transparent bg-clip-text bg-cover bg-center drop-shadow-2xl select-none"
+                style={{ backgroundImage: `url('/assets/young%20vulnteers.jpeg')` }}
+              >
+                25K
+              </span>
+              <span className="text-5xl md:text-7xl lg:text-[6.5rem] font-bold text-[#d2a94c] drop-shadow-[0_0_25px_rgba(210,169,76,0.5)] ml-1 select-none">
+                +
+              </span>
+            </div>
+            <p className="mt-4 text-lg md:text-xl text-white font-medium">Individuals Reached</p>
+          </div>
+        </div>
       </div>
     </section>
+  );
+}
+
+function ServiceCard({ service, customInnerStyle }: { service: any; customInnerStyle?: React.CSSProperties }) {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+  
+  // Parallax translation: slower movement for background
+  const y = useTransform(scrollYProgress, [0, 1], ["-10%", "10%"]);
+
+  return (
+    <Link 
+      ref={ref}
+      to={service.link} 
+      className="group relative overflow-hidden min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex flex-col justify-end p-10 md:p-14 cursor-pointer w-full border-r border-white/10 last:border-r-0"
+    >
+      <motion.img 
+        style={{ y, scale: 1.15 }} 
+        src={service.img} 
+        alt={service.title} 
+        loading="lazy" 
+        className="absolute inset-0 w-full h-[120%] object-cover -top-[10%] transform group-hover:scale-[1.25] transition-transform duration-1000 origin-center" 
+      />
+      <div className="absolute inset-0 bg-gradient-to-t from-brand-darker via-brand-darker/80 to-transparent transition-opacity duration-500"></div>
+      
+      <div className="relative z-10" style={customInnerStyle}>
+        <div className="w-12 h-12 rounded-full border border-brand-secondary/40 bg-black/40 flex items-center justify-center mb-8 backdrop-blur-sm transition-colors duration-500 group-hover:border-brand-secondary">
+          {service.icon}
+        </div>
+        <h3 className="font-serif text-4xl mb-3 text-white">{service.title}</h3>
+        <p className="text-gray-300 text-lg leading-relaxed max-w-[90%]">{service.desc}</p>
+      </div>
+    </Link>
   );
 }
 
@@ -490,21 +690,21 @@ function ServicesSection() {
     {
       icon: <Brain size={18} className="text-brand-secondary" />,
       title: "Clinical Counselling",
-      desc: "Faith-sensitive counselling that helps individuals, couples, and families move forward with clarity and support.",
+      desc: "Faith-sensitive therapy for individuals, couples, and families.",
       img: "/assets/Counselling image.jpg",
       link: "/counselling"
     },
     {
       icon: <Heart size={18} className="text-brand-secondary" />,
       title: "Food Security",
-      desc: "Dignified food and emergency support that helps families regain stability without added stress.",
+      desc: "Discreet, dignified food bank and emergency support.",
       img: "/assets/Food Security images.hero.jpg",
       link: "/get-help"
     },
     {
       icon: <Users size={18} className="text-brand-secondary" />,
       title: "Community Programs",
-      desc: "Programs that strengthen belonging, connection, and practical support across generations.",
+      desc: "Youth mentorship, seniors connection, and family support.",
       img: "/assets/comunity1.jpeg",
       link: "/programs"
     }
@@ -515,25 +715,21 @@ function ServicesSection() {
       <div className="max-w-7xl mx-auto px-6 mb-12 text-center">
         <span className="text-brand-primary font-bold tracking-widest uppercase text-xs mb-4 block">Our Core Pillars</span>
         <h2 className="font-serif text-4xl md:text-5xl text-brand-darker">How we support the community.</h2>
-        <p className="mx-auto mt-5 max-w-3xl text-lg leading-relaxed text-gray-600">
-          Each service is designed to remove barriers, restore stability, and help families access the right support with confidence.
-        </p>
       </div>
       <div className="relative">
         <div className="grid grid-cols-1 md:grid-cols-3">
           {services.map((service, idx) => (
-            <Link to={service.link} key={idx} className="group relative overflow-hidden min-h-[400px] md:min-h-[500px] lg:min-h-[600px] flex flex-col justify-end p-10 md:p-14 cursor-pointer w-full border-r border-white/10 last:border-r-0">
-              <img src={service.img} alt={service.title} loading="lazy" className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105" />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-darker via-brand-darker/80 to-transparent transition-opacity duration-500"></div>
-              
-              <div className="relative z-10">
-                <div className="w-12 h-12 rounded-full border border-brand-secondary/40 bg-black/40 flex items-center justify-center mb-8 backdrop-blur-sm transition-colors duration-500 group-hover:border-brand-secondary">
-                  {service.icon}
-                </div>
-                <h3 className="font-serif text-4xl mb-3 text-white">{service.title}</h3>
-                <p className="text-gray-300 text-lg leading-relaxed max-w-[90%]">{service.desc}</p>
-              </div>
-            </Link>
+            <ServiceCard 
+              key={idx} 
+              service={service} 
+              customInnerStyle={idx === 1 ? {
+                paddingLeft: '0px',
+                paddingTop: '0px',
+                marginLeft: '0px',
+                marginTop: '0px',
+                marginBottom: '70px'
+              } : undefined}
+            />
           ))}
         </div>
         {/* Gradient overlay to melt the bottom borders and images perfectly into the next section */}
@@ -544,15 +740,26 @@ function ServicesSection() {
 }
 
 function CTASection() {
+  const ref = useRef(null);
+  const { scrollYProgress } = useScroll({
+    target: ref,
+    offset: ["start end", "end start"]
+  });
+  
+  const y = useTransform(scrollYProgress, [0, 1], ["-15%", "15%"]);
+  const scale = useTransform(scrollYProgress, [0, 1], [1, 1.1]);
+  const opacity = useTransform(scrollYProgress, [0, 0.2, 0.8, 1], [0.6, 1, 1, 0.6]);
+
   return (
-    <section className="relative py-32 md:py-40 overflow-hidden">
+    <section ref={ref} className="relative py-32 md:py-40 overflow-hidden">
       {/* Background Image & Overlays */}
       <div className="absolute inset-0 z-0">
-        <img 
+        <motion.img 
+          style={{ y, scale, opacity }}
           src={getImageUrl("/assets/vulnteering%20team.jpg", 2000)} 
           alt="Community Support" 
           loading="lazy"
-          className="w-full h-full object-cover object-center"
+          className="w-full h-[130%] object-cover object-center -top-[15%] relative origin-center"
         />
         <div className="absolute inset-0 bg-brand-darker/80 backdrop-blur-sm"></div>
         <div className="absolute inset-0 bg-gradient-to-r from-brand-darker via-brand-darker/80 to-transparent"></div>
@@ -658,11 +865,61 @@ function TrustStrip() {
   );
 }
 
+function TrustInfoStrip() {
+  return (
+    <section className="-mt-12 md:-mt-16 relative z-20 pb-12 md:pb-16 px-4 md:px-6">
+      <div className="max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-[#e8decd] gap-[1px] border border-[#e8decd] rounded-[1.5rem] shadow-2xl overflow-hidden">
+          
+          <div className="bg-[#f0e7d3] px-6 py-8 transition-colors hover:bg-[#e8dec0]">
+            <div className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#8a7033] mb-3">Reach Us</div>
+            <div className="text-[1.35rem] font-medium text-[#1a1f1c] mb-2 font-serif">613-626-1141</div>
+            <p className="text-[0.95rem] text-[#635a4d] leading-relaxed">
+              Talk to OMCS directly for support or next steps.
+            </p>
+          </div>
+          
+          <div className="bg-[#f0e7d3] px-6 py-8 transition-colors hover:bg-[#e8dec0]">
+            <div className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#8a7033] mb-3">Confidential Care</div>
+            <div className="text-[1.35rem] font-medium text-[#1a1f1c] mb-2 font-serif">Private and respectful</div>
+            <p className="text-[0.95rem] text-[#635a4d] leading-relaxed">
+              Support conversations are handled with care and discretion.
+            </p>
+          </div>
+          
+          <div className="bg-[#f0e7d3] px-6 py-8 transition-colors hover:bg-[#e8dec0]">
+            <div className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#8a7033] mb-3">Location</div>
+            <div className="text-[1.35rem] font-medium text-[#1a1f1c] mb-2 font-serif">Ottawa, Ontario</div>
+            <p className="text-[0.95rem] text-[#635a4d] leading-relaxed">
+              Serving Muslim individuals, families, and the wider community.
+            </p>
+          </div>
+          
+          <div className="bg-[#f0e7d3] px-6 py-8 transition-colors hover:bg-[#e8dec0]">
+            <div className="text-[0.65rem] font-bold uppercase tracking-[0.2em] text-[#8a7033] mb-3">What Happens Next</div>
+            <div className="text-[1.35rem] font-medium text-[#1a1f1c] mb-2 font-serif">We guide you clearly</div>
+            <p className="text-[0.95rem] text-[#635a4d] leading-relaxed">
+              Reach out, share what you need, and our team helps direct you.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export function Home() {
   return (
     <>
+      <SEO 
+        title="Mental Health & Culturally Responsive Therapy in Ottawa"
+        description="Ottawa Muslim Community Services (OMCS) provides faith-sensitive clinical therapy, mental health support, and family counselling tailored to the specific needs of Muslims in Ottawa."
+        canonicalUrl="/"
+      />
       {/* 1. The Hook & Credibility */}
       <Hero />
+      <TrustInfoStrip />
       <TrustStrip />
       
       {/* 2. The Solution: What we do (Moved up so it's immediately visible) */}

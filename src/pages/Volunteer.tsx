@@ -4,6 +4,7 @@ import { ASSETS, getImageUrl } from '../assets';
 import { Calendar, ArrowRight } from 'lucide-react';
 import { SlideOver } from '../components/SlideOver';
 import { IntakeForm } from '../components/IntakeForm';
+import { SEO } from '../components/SEO';
 
 export function Volunteer() {
   const [isFormOpen, setIsFormOpen] = useState(false);
@@ -19,14 +20,14 @@ export function Volunteer() {
     {
       title: "Eid Hamper Packing",
       badge: "Seasonal",
-      date: "March-April (before Eid)",
+      date: "March – April (before Eid)",
       desc: "Help assemble and deliver food hampers to families in need. Flexible shifts available."
     },
     {
       title: "Community Iftar",
       badge: "Ramadan",
       date: "Evenings during Ramadan",
-      desc: "Assist with setup, serving, and cleanup at our community iftars. Volunteer slots are 3-4 hours."
+      desc: "Assist with setup, serving, and cleanup at our community iftars. Volunteer slots are 3–4 hours."
     },
     {
       title: "Youth Mentor",
@@ -56,6 +57,11 @@ export function Volunteer() {
 
   return (
     <div className="bg-white">
+      <SEO 
+        title="Volunteer With Us - OMCS"
+        description="Volunteer your time and skills with Ottawa Muslim Community Services. Help make a positive impact in our local community."
+        canonicalUrl="/volunteer"
+      />
       <PageHeader 
         title="Volunteer With Us" 
         description="Join a community of compassionate individuals dedicated to making a difference in Ottawa's Muslim community."

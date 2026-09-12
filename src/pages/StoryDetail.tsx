@@ -3,6 +3,7 @@ import { storiesData } from '../data/stories';
 import { ArrowLeft, Calendar, Tag } from 'lucide-react';
 import { motion } from 'motion/react';
 import { useEffect } from 'react';
+import { SEO } from '../components/SEO';
 
 export function StoryDetail() {
   const { slug } = useParams();
@@ -26,6 +27,12 @@ export function StoryDetail() {
 
   return (
     <article className="bg-white min-h-screen pb-24">
+      <SEO 
+        title={`${story.title} - OMCS Community Stories`}
+        description={story.quote}
+        image={`https://omcs.ca${story.img}`}
+        canonicalUrl={`/stories/${story.slug}`}
+      />
       {/* Hero Image */}
       <div className="relative h-[60vh] md:h-[70vh] w-full">
         <img src={story.img} alt={story.title} className="w-full h-full object-cover" />

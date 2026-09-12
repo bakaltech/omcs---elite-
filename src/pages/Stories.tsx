@@ -7,6 +7,7 @@ import { Link, useSearchParams } from 'react-router-dom';
 import { storiesData } from '../data/stories';
 import { ParallaxStory } from '../components/ParallaxStory';
 import { EventGallery } from '../components/EventGallery';
+import { SEO } from '../components/SEO';
 
 export function Stories() {
   const featuredStories = storiesData.slice(0, 2);
@@ -32,6 +33,11 @@ export function Stories() {
 
   return (
     <div className="bg-brand-darker">
+      <SEO 
+        title="Community Stories & Testimonials - OMCS"
+        description="Read real stories from the Ottawa Muslim community about the life-changing impact of culturally informed mental health and family support."
+        canonicalUrl="/stories"
+      />
       <PageHeader 
         title="Community Stories" 
         description="Real stories of resilience, healing, and hope from the individuals and families we serve."

@@ -4,6 +4,7 @@ import { ASSETS, getImageUrl } from '../assets';
 import { Phone, Mail, MapPin, Heart, ArrowRight } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 export function Resources() {
   const [activeCategory, setActiveCategory] = useState("All");
@@ -126,6 +127,11 @@ export function Resources() {
 
   return (
     <div className="bg-white">
+      <SEO 
+        title="Community Resources & Partners - OMCS"
+        description="A directory of trusted partner organizations in Ottawa offering mental health, food, housing, and crisis support services."
+        canonicalUrl="/resources"
+      />
       <PageHeader 
         title="Partners & Resources" 
         description="Our partners and community resources form a vibrant ecosystem of support. Explore the organizations that make our work possible."

@@ -420,9 +420,16 @@ function PrivacyAndCTA() {
   );
 }
 
+import { SEO } from '../components/SEO';
+
 export function Counselling() {
   return (
     <div className="bg-brand-light min-h-screen">
+      <SEO 
+        title="Mental Health & Clinical Counselling - OMCS"
+        description="Faith-based therapy, family counselling, and mental health support by accredited Muslim professionals in Ottawa."
+        canonicalUrl="/counselling"
+      />
       <CounsellingHero />
       <TherapistsSection />
       <HowItWorks />

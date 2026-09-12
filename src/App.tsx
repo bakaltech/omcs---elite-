@@ -3,6 +3,7 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import { HelmetProvider } from 'react-helmet-async';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { Layout } from './components/Layout';
 import { Home } from './pages/Home';
@@ -25,28 +26,30 @@ import { Events } from './pages/Events';
 
 export default function App() {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="get-help" element={<GetHelp />} />
-          <Route path="programs" element={<Programs />} />
-          <Route path="programs/:id" element={<ProgramDetail />} />
-          <Route path="counselling" element={<Counselling />} />
-          <Route path="impact" element={<Impact />} />
-          <Route path="stories" element={<Stories />} />
-          <Route path="stories/:slug" element={<StoryDetail />} />
-          <Route path="get-involved" element={<GetInvolved />} />
-          <Route path="events" element={<Events />} />
-          <Route path="donate" element={<Donate />} />
-          <Route path="contact" element={<Contact />} />
-          <Route path="privacy" element={<Privacy />} />
-          <Route path="terms" element={<Terms />} />
-          <Route path="volunteer" element={<Volunteer />} />
-          <Route path="resources" element={<Resources />} />
-        </Route>
-      </Routes>
-    </BrowserRouter>
+    <HelmetProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="about" element={<About />} />
+            <Route path="get-help" element={<GetHelp />} />
+            <Route path="programs" element={<Programs />} />
+            <Route path="programs/:id" element={<ProgramDetail />} />
+            <Route path="counselling" element={<Counselling />} />
+            <Route path="impact" element={<Impact />} />
+            <Route path="stories" element={<Stories />} />
+            <Route path="stories/:slug" element={<StoryDetail />} />
+            <Route path="get-involved" element={<GetInvolved />} />
+            <Route path="events" element={<Events />} />
+            <Route path="donate" element={<Donate />} />
+            <Route path="contact" element={<Contact />} />
+            <Route path="privacy" element={<Privacy />} />
+            <Route path="terms" element={<Terms />} />
+            <Route path="volunteer" element={<Volunteer />} />
+            <Route path="resources" element={<Resources />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </HelmetProvider>
   );
 }

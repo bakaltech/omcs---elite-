@@ -197,9 +197,16 @@ function CommunityVoices() {
   );
 }
 
+import { SEO } from '../components/SEO';
+
 export function Impact() {
   return (
     <div className="bg-white">
+      <SEO 
+        title="Our Impact - Ottawa Muslim Community Services"
+        description="See the real-world difference OMCS makes in the Ottawa community through mental health counseling, food security, and family support."
+        canonicalUrl="/impact"
+      />
       <PageHeader 
         title="Our Impact" 
         description="Transparency and accountability are at the heart of what we do. See how your support translates into real change."

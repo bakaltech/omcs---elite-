@@ -6,6 +6,7 @@ import { ArrowRight, ArrowLeft, CheckCircle2 } from 'lucide-react';
 import { motion } from 'motion/react';
 import { SlideOver } from '../components/SlideOver';
 import { IntakeForm } from '../components/IntakeForm';
+import { SEO } from '../components/SEO';
 
 export function ProgramDetail() {
   const { id } = useParams<{ id: string }>();
@@ -18,6 +19,12 @@ export function ProgramDetail() {
 
   return (
     <div className="bg-brand-light/30 min-h-screen">
+      <SEO 
+        title={`${program.title} - OMCS Programs`}
+        description={program.shortDesc}
+        image={`https://omcs.ca${program.img}`}
+        canonicalUrl={`/programs/${program.id}`}
+      />
       <PageHeader 
         title={program.title} 
         description={program.shortDesc}

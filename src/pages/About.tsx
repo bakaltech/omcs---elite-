@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { PageHeader } from '../components/PageHeader';
 import { ASSETS, getImageUrl } from '../assets';
 import { motion, AnimatePresence } from 'motion/react';
+import { SEO } from '../components/SEO';
 
 function MissionVision() {
   return (
@@ -462,6 +463,11 @@ function TeamDirectory() {
 export function About() {
   return (
     <div className="bg-white">
+      <SEO 
+        title="About Us - Ottawa Muslim Community Services"
+        description="Learn about the mission, values, and clinical expertise driving OMCS. We serve the Ottawa community with culturally responsive therapy and essential social impact programs."
+        canonicalUrl="/about"
+      />
       <PageHeader 
         title="Our Story" 
         description="Born from a need for culturally competent care, OMCS is a sanctuary where faith and clinical excellence meet."

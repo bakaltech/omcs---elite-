@@ -14,7 +14,7 @@ export function PageHeader({ title, description, image, images }: { title: strin
   }, [displayImages.length]);
 
   return (
-    <section className="relative pt-40 pb-20 px-6 md:px-12 overflow-hidden">
+    <section className="relative pt-40 pb-20 overflow-hidden">
       {displayImages.length > 0 ? (
         <div className="absolute inset-0 z-0 bg-brand-darker">
           <AnimatePresence initial={false}>
@@ -34,7 +34,7 @@ export function PageHeader({ title, description, image, images }: { title: strin
       ) : (
         <div className="absolute inset-0 z-0 bg-brand-primary"></div>
       )}
-      <div className="max-w-7xl mx-auto relative z-20 text-white">
+      <div className="max-w-7xl mx-auto px-6 md:px-12 relative z-20 text-white">
         <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl mb-6">{title}</h1>
         <p className="text-xl text-white/90 max-w-2xl leading-relaxed">{description}</p>
       </div>

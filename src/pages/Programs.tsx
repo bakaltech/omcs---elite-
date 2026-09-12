@@ -7,11 +7,11 @@ import { programsData } from '../data/programs';
 
 function ProgramsHero() {
   return (
-    <section className="relative min-h-[60vh] flex items-center pt-24 pb-12 overflow-hidden">
+    <section className="relative min-h-[60vh] md:min-h-[70vh] flex items-center pt-40 md:pt-56 pb-20 overflow-hidden">
       <div className="absolute inset-0 z-0">
         <img 
-          src={getImageUrl(ASSETS.youthMentorship, 2000)} 
-          alt="Youth Mentorship" 
+          src={getImageUrl(ASSETS.motherHuggingChild, 2000)} 
+          alt="Deep emotional care and community support" 
           loading="eager"
           className="w-full h-full object-cover object-center"
         />
@@ -121,21 +121,54 @@ function EcosystemOfCare() {
     {
       title: "Food Security",
       synergy: "The Gateway to Care",
+      icon: (props: any) => (
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+          {/* Islamic geometric 8 point star base */}
+          <path d="M20 4L23.5 16.5L36 20L23.5 23.5L20 36L16.5 23.5L4 20L16.5 16.5L20 4Z" fill="currentColor" fillOpacity="0.08" />
+          <path d="M20 11A9 9 0 0 1 29 20M20 29A9 9 0 0 1 11 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <circle cx="20" cy="20" r="3.5" fill="currentColor" />
+          <circle cx="29" cy="20" r="1.5" fill="currentColor" />
+          <circle cx="11" cy="20" r="1.5" fill="currentColor" />
+        </svg>
+      ),
       description: "A family arrives for a food hamper. During a dignified intake process, our team identifies that the parents need Newcomer Settlement support, and their teenagers are enrolled in Youth Mentorship. Food is often the first step to holistic healing."
     },
     {
       title: "Clinical Counselling",
       synergy: "Healing the Foundation",
+      icon: (props: any) => (
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+          <path d="M20 4L23.5 16.5L36 20L23.5 23.5L20 36L16.5 23.5L4 20L16.5 16.5L20 4Z" fill="currentColor" fillOpacity="0.08" />
+          <path d="M14 26C14 26 18 14 28 14C28 14 24 26 14 26Z" stroke="currentColor" strokeWidth="2.5" strokeLinejoin="round" />
+          <circle cx="21" cy="20" r="2.5" fill="currentColor" />
+        </svg>
+      ),
       description: "While a mother receives trauma-informed therapy, her children are engaged in our Youth Mentorship programs. By treating the individual, we stabilize the entire family unit, ensuring long-term resilience."
     },
     {
       title: "Youth Mentorship",
       synergy: "Breaking the Cycle",
+      icon: (props: any) => (
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+          <path d="M20 4L23.5 16.5L36 20L23.5 23.5L20 36L16.5 23.5L4 20L16.5 16.5L20 4Z" fill="currentColor" fillOpacity="0.08" />
+          <path d="M20 10A10 10 0 1 1 10 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeDasharray="4 4" />
+          <path d="M20 15A5 5 0 1 1 15 20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
+          <path d="M8 20L12 16M8 20L12 24" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+        </svg>
+      ),
       description: "Youth who find belonging in our mentorship programs often bring their families into our ecosystem. A struggling teen might reveal food insecurity at home, allowing us to discreetly provide a food hamper to their parents."
     },
     {
       title: "Newcomer Settlement",
       synergy: "Building a New Home",
+      icon: (props: any) => (
+        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" {...props}>
+          <path d="M20 4L23.5 16.5L36 20L23.5 23.5L20 36L16.5 23.5L4 20L16.5 16.5L20 4Z" fill="currentColor" fillOpacity="0.08" />
+          <path d="M10 22L20 12L30 22" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
+          <path d="M14 20V28H26V20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
+          <circle cx="20" cy="24" r="1.5" fill="currentColor" />
+        </svg>
+      ),
       description: "Navigating a new country is traumatic. Our settlement workers don't just help with paperwork; they seamlessly connect refugees to our clinical therapists who speak their language and understand their cultural context."
     }
   ];
@@ -192,7 +225,7 @@ function EcosystemOfCare() {
                   className="relative z-10"
                 >
                   <div className="flex items-center gap-3 mb-6 text-brand-secondary">
-                    <Network className="w-6 h-6" />
+                    {connections[activeTab].icon({ className: "w-8 h-8" })}
                     <span className="font-medium tracking-[0.2em] uppercase text-xs">The Connection</span>
                   </div>
                   <h3 className="text-3xl md:text-4xl font-serif text-brand-darker mb-6">
@@ -396,9 +429,16 @@ function CTASection() {
   );
 }
 
+import { SEO } from '../components/SEO';
+
 export function Programs() {
   return (
     <div className="bg-brand-light/30">
+      <SEO 
+        title="Our Programs & Services - OMCS"
+        description="Explore the services OMCS offers, including family support, food security, new immigrant assistance, and youth mentorship."
+        canonicalUrl="/programs"
+      />
       <ProgramsHero />
       <ProgramList />
       <EcosystemOfCare />

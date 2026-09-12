@@ -6,8 +6,3 @@ coverage/
 *.log
 .env*
 !.env.example
-.vercel/
-*.pem
-*.key
-
-.vercel

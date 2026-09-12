@@ -1,9 +1,15 @@
 import { PageHeader } from '../components/PageHeader';
 import { ASSETS, getImageUrl } from '../assets';
+import { SEO } from '../components/SEO';
 
 export function Terms() {
   return (
     <div className="bg-white">
+      <SEO 
+        title="Terms of Use - OMCS"
+        description="Terms and conditions for using the Ottawa Muslim Community Services website."
+        canonicalUrl="/terms"
+      />
       <PageHeader 
         title="Terms of Use" 
         description="Ground rules for using the OMCS website and linked information."

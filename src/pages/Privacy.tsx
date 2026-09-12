@@ -1,9 +1,15 @@
 import { PageHeader } from '../components/PageHeader';
 import { ASSETS, getImageUrl } from '../assets';
+import { SEO } from '../components/SEO';
 
 export function Privacy() {
   return (
     <div className="bg-white">
+      <SEO 
+        title="Privacy Policy - OMCS"
+        description="Read the Ottawa Muslim Community Services privacy policy to learn how we protect your information."
+        canonicalUrl="/privacy"
+      />
       <PageHeader 
         title="Privacy Policy" 
         description="How OMCS collects, uses, and safeguards information shared through this website."

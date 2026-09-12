@@ -300,9 +300,9 @@ function MoreWaysSection() {
 
 function UpcomingEventsSection() {
   const [isFormOpen, setIsFormOpen] = useState(false);
-  const [selectedEvent, setSelectedEvent] = useState<{title: string, type: 'volunteer'|'rsvp'} | null>(null);
+  const [selectedEvent, setSelectedEvent] = useState<{title: string, actionType: 'volunteer'|'rsvp'} | null>(null);
 
-  const handleActionClick = (e: React.MouseEvent, evt: {title: string, type: 'volunteer'|'rsvp'}) => {
+  const handleActionClick = (e: React.MouseEvent, evt: {title: string, actionType: 'volunteer'|'rsvp'}) => {
     e.preventDefault();
     setSelectedEvent(evt);
     setIsFormOpen(true);
@@ -461,9 +461,16 @@ function ContactCTA() {
   );
 }
 
+import { SEO } from '../components/SEO';
+
 export function GetInvolved() {
   return (
     <div className="bg-white">
+      <SEO 
+        title="Get Involved - Volunteer & Support OMCS in Ottawa"
+        description="Join Ottawa Muslim Community Services as a volunteer, partner, or supporter. Help us build a stronger, healthier community together."
+        canonicalUrl="/get-involved"
+      />
       <PageHeader 
         title="Get Involved" 
         description="Your time, talent, and generosity help us strengthen Ottawa's Muslim community. Join us in making a difference."

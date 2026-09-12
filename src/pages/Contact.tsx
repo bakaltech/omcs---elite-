@@ -2,15 +2,62 @@ import { PageHeader } from '../components/PageHeader';
 import { ASSETS, getImageUrl } from '../assets';
 import { MapPin, Phone, Mail, ArrowRight, HeartHandshake } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { SEO } from '../components/SEO';
 
 export function Contact() {
   return (
     <div className="bg-white">
+      <SEO 
+        title="Contact Us - OMCS"
+        description="Get in touch with Ottawa Muslim Community Services for general inquiries, partnerships, or to learn more about our faith-based clinical support."
+        canonicalUrl="/contact"
+      />
       <PageHeader 
         title="Contact & Admin" 
         description="Reach out for general inquiries, community partnerships, media requests, or to learn more about supporting our mission."
         image={getImageUrl(ASSETS.communityGathering, 2000)}
       />
+
+      {/* Quick Info Trust Strip */}
+      <section className="bg-brand-light/30 border-y border-brand-secondary/10">
+        <div className="max-w-7xl mx-auto px-6 md:px-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-brand-secondary/20">
+            
+            <div className="py-12 md:py-16 md:pr-8 lg:pr-12">
+              <h4 className="text-brand-secondary font-medium tracking-[0.15em] uppercase text-xs mb-3">Reach Us</h4>
+              <p className="font-serif text-2xl text-brand-darker mb-3">613-626-1141</p>
+              <p className="text-gray-600 font-light leading-relaxed">
+                Talk to OMCS directly for support or next steps.
+              </p>
+            </div>
+            
+            <div className="py-12 md:py-16 md:px-8 lg:px-12">
+              <h4 className="text-brand-secondary font-medium tracking-[0.15em] uppercase text-xs mb-3">Confidential Care</h4>
+              <p className="font-serif text-2xl text-brand-darker mb-3">Private and respectful</p>
+              <p className="text-gray-600 font-light leading-relaxed">
+                Support conversations are handled with care and discretion.
+              </p>
+            </div>
+            
+            <div className="py-12 md:py-16 md:px-8 lg:px-12">
+              <h4 className="text-brand-secondary font-medium tracking-[0.15em] uppercase text-xs mb-3">Location</h4>
+              <p className="font-serif text-2xl text-brand-darker mb-3">Ottawa, Ontario</p>
+              <p className="text-gray-600 font-light leading-relaxed">
+                Serving Muslim individuals, families, and the wider community.
+              </p>
+            </div>
+            
+            <div className="py-12 md:py-16 md:pl-8 lg:pl-12">
+              <h4 className="text-brand-secondary font-medium tracking-[0.15em] uppercase text-xs mb-3">What Happens Next</h4>
+              <p className="font-serif text-2xl text-brand-darker mb-3">We guide you clearly</p>
+              <p className="text-gray-600 font-light leading-relaxed">
+                Reach out, share what you need, and our team helps direct you.
+              </p>
+            </div>
+
+          </div>
+        </div>
+      </section>
 
       <section className="py-24 md:py-32">
         <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -106,10 +153,7 @@ export function Contact() {
             {/* Contact Form */}
             <div className="bg-brand-light/30 p-8 md:p-12 rounded-[2rem] border border-gray-100 h-fit">
               <h3 className="font-serif text-3xl text-brand-darker mb-8">Send an inquiry</h3>
-              <p className="mb-6 text-gray-600 font-light leading-relaxed">
-                Direct outreach works best while our online inquiry form is being finalized. Share your details below if you would like to see the intended experience, or email our team directly to start the conversation today.
-              </p>
-
+              
               <form className="space-y-6" onSubmit={(e) => e.preventDefault()} noValidate>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
@@ -183,12 +227,12 @@ export function Contact() {
                   ></textarea>
                 </div>
 
-                <a
-                  href="mailto:info@omcs.ca?subject=General%20Inquiry"
-                  className="flex w-full items-center justify-center rounded-xl bg-brand-darker py-4 font-medium text-white transition-colors duration-300 hover:bg-brand-primary hover:text-brand-darker focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-secondary/50"
+                <button 
+                  type="submit"
+                  className="w-full bg-brand-darker hover:bg-brand-primary text-white hover:text-brand-darker font-medium py-4 rounded-xl transition-colors duration-300 focus:outline-none focus-visible:ring-4 focus-visible:ring-brand-secondary/50"
                 >
-                  Email Our Team
-                </a>
+                  Send Message
+                </button>
               </form>
             </div>
 
