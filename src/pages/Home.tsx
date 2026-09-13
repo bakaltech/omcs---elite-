@@ -649,7 +649,7 @@ function ImpactSection() {
   );
 }
 
-function ServiceCard({ service, customInnerStyle }: { service: any; customInnerStyle?: React.CSSProperties }) {
+function ServiceCard({ service }: { service: any }) {
   const ref = useRef(null);
   const { scrollYProgress } = useScroll({
     target: ref,
@@ -674,7 +674,7 @@ function ServiceCard({ service, customInnerStyle }: { service: any; customInnerS
       />
       <div className="absolute inset-0 bg-gradient-to-t from-brand-darker via-brand-darker/80 to-transparent transition-opacity duration-500"></div>
       
-      <div className="relative z-10" style={customInnerStyle}>
+      <div className="relative z-10">
         <div className="w-12 h-12 rounded-full border border-brand-secondary/40 bg-black/40 flex items-center justify-center mb-8 backdrop-blur-sm transition-colors duration-500 group-hover:border-brand-secondary">
           {service.icon}
         </div>
@@ -721,14 +721,7 @@ function ServicesSection() {
           {services.map((service, idx) => (
             <ServiceCard 
               key={idx} 
-              service={service} 
-              customInnerStyle={idx === 1 ? {
-                paddingLeft: '0px',
-                paddingTop: '0px',
-                marginLeft: '0px',
-                marginTop: '0px',
-                marginBottom: '70px'
-              } : undefined}
+              service={service}
             />
           ))}
         </div>
