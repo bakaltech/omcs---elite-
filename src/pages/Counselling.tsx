@@ -11,7 +11,7 @@ function CounsellingHero() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0 z-0">
         <img 
-          src="/assets/Counselling%20image.jpg" 
+          src="assets/Counselling%20image.jpg" 
           alt="Counselling session" 
           loading="eager"
           className="w-full h-full object-cover object-[center_30%]"
@@ -52,7 +52,7 @@ const therapists = [
   {
     name: "Samoon Tasmim",
     title: "MA, PhD, RP · Program Advisor",
-    image: "/assets/Samoon Tasmim.jpg",
+    image: "assets/Samoon Tasmim.jpg",
     speaks: "English, Pashto, Dari/Farsi, Urdu/Hindi",
     worksWith: "teens, adults, individuals, couples, families",
     modalities: ["Narrative", "Psychodynamic", "Trauma-informed", "EFT", "Attachment-based", "Schema therapy"],
@@ -63,7 +63,7 @@ const therapists = [
   {
     name: "Berak Hussain",
     title: "BA Honors, MEd, RP",
-    image: "/assets/Berak Hussain.jpeg",
+    image: "assets/Berak Hussain.jpeg",
     speaks: "English, Arabic, French",
     worksWith: "Teens (17+), individuals, families, groups",
     modalities: ["CBT", "Attachment-based", "Culturally-sensitive", "Emotion-focused", "Existential", "Family systems", "Humanistic", "Integrative", "Motivational interviewing", "Multicultural", "Positive psychology", "Strength-based", "Trauma-focused"],
@@ -74,7 +74,7 @@ const therapists = [
   {
     name: "Buraidah Razack",
     title: "BA, MSW (in progress) · Social worker in training",
-    image: "/assets/Buraidah Razack.jpg",
+    image: "assets/Buraidah Razack.jpg",
     speaks: "English, Thai, Arabic (beginner)",
     worksWith: "children, teens, adults, families",
     modalities: ["Transactional analysis", "Compassion-focused", "Culturally-sensitive", "Faith-centered", "Integrative", "Motivational interviewing", "Multicultural", "Narrative", "Person-centered", "Psychodynamic", "Strength-based", "Trauma-focused"],
@@ -226,7 +226,7 @@ function TherapyUnderstands() {
     <section className="py-24 md:py-32 bg-brand-darker text-white relative overflow-hidden">
       {/* Subtle Background Texture */}
       <div className="absolute inset-0 z-0 opacity-10 mix-blend-luminosity">
-        <img src="/assets/Counselling image.jpg" alt="Background" loading="lazy" className="w-full h-full object-cover" />
+        <img src="assets/Counselling image.jpg" alt="Background" loading="lazy" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-brand-darker via-brand-darker/80 to-brand-darker"></div>
       </div>
 

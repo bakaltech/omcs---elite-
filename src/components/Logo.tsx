@@ -51,7 +51,7 @@ export function Logo({ className = "w-10 h-10" }: { className?: string }) {
            will ever touch the edges or get clipped off.
         */}
         <motion.img 
-          src={getImageUrl("/logos/Logos/Omcs-logo.jpg", 150)} 
+          src={getImageUrl("logos/Logos/Omcs-logo.jpg", 150)} 
           alt="OMCS Logo" 
           className="w-full h-full object-contain mix-blend-multiply p-1.5"
           animate={{ scale: [1, 1.02, 1] }}

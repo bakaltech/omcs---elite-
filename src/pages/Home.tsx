@@ -61,9 +61,9 @@ function Hero() {
   const y = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
   
   const heroImages = [
-    "/assets/Muslim%20girls%20holding%20each%20other%20and%20smiling,%20hero%20image1.jpg",
-    "/assets/eid.jpg",
-    "/assets/family%20under%20sunset.jpg"
+    "assets/Muslim%20girls%20holding%20each%20other%20and%20smiling,%20hero%20image1.jpg",
+    "assets/eid.jpg",
+    "assets/family%20under%20sunset.jpg"
   ];
   const [currentSlide, setCurrentSlide] = useState(0);
 
@@ -170,9 +170,9 @@ function Hero() {
 function QuoteBanner() {
   const [fadeIndex, setFadeIndex] = useState(0);
   const crossfadeImages = [
-    "/assets/eid.jpg",
-    "/assets/eid2.jpg",
-    "/assets/eid3.jpg"
+    "assets/eid.jpg",
+    "assets/eid2.jpg",
+    "assets/eid3.jpg"
   ];
 
   useEffect(() => {
@@ -183,17 +183,17 @@ function QuoteBanner() {
   }, []);
 
   const curatedImages = [
-    "/assets/comunity2.jpeg",
-    "/assets/Counselling%20image.jpg",
-    "/assets/family%20under%20sunset.jpg",
-    "/assets/Muslim%20girls%20holding%20each%20other%20and%20smiling,%20hero%20image1.jpg",
+    "assets/comunity2.jpeg",
+    "assets/Counselling%20image.jpg",
+    "assets/family%20under%20sunset.jpg",
+    "assets/Muslim%20girls%20holding%20each%20other%20and%20smiling,%20hero%20image1.jpg",
   ];
 
   return (
     <section className="pb-24 md:pb-32 relative text-white overflow-hidden bg-brand-darker">
       {/* Subtle Background Texture */}
       <div className="absolute inset-0 z-0 opacity-20 mix-blend-luminosity">
-        <img src={getImageUrl("/assets/comunity4.jpeg", 2000)} alt="Background" loading="lazy" className="w-full h-full object-cover" />
+        <img src={getImageUrl("assets/comunity4.jpeg", 2000)} alt="Background" loading="lazy" className="w-full h-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-b from-brand-darker via-brand-darker/80 to-brand-darker"></div>
       </div>
 
@@ -340,19 +340,19 @@ function EliteTrustSection() {
       name: "Samoon Tasmim",
       credentials: "MA, PhD, RP",
       quote: "Healing starts sooner when care feels safe, steady, and grounded in real cultural understanding.",
-      image: "/assets/Samoon Tasmim.jpg"
+      image: "assets/Samoon Tasmim.jpg"
     },
     {
       name: "Berak Hussain",
       credentials: "MSW, RSW",
       quote: "We don't just treat symptoms; we honor your story, your faith, and your family's journey.",
-      image: "/assets/Berak Hussain.jpeg"
+      image: "assets/Berak Hussain.jpeg"
     },
     {
       name: "Buraidah Razack",
       credentials: "MSc, CCC",
       quote: "True therapy provides a space where you don't have to translate your culture before you can start healing.",
-      image: "/assets/Buraidah Razack.jpg"
+      image: "assets/Buraidah Razack.jpg"
     }
   ];
 
@@ -428,7 +428,7 @@ const featuredStories = [
     text: "During the Eid al-Adha Food Hamper event, volunteers prepared food packages for families who might otherwise go without a proper celebration. Each hamper contained groceries to help families prepare festive meals at home.",
     linkText: "Read the Full Story",
     linkUrl: "/stories",
-    image: "/assets/Eidkits.jpg",
+    image: "assets/Eidkits.jpg",
     alt: "Volunteers preparing Eid food hampers for local families"
   },
   {
@@ -455,7 +455,7 @@ const featuredStories = [
     text: "During Ramadan, many families struggle with iftar costs. OMCS volunteers delivered essential groceries to families in need, lifting a heavy burden and allowing them to focus on faith and family.",
     linkText: "Read the Full Story",
     linkUrl: "/stories",
-    image: "/assets/ramadan7.jpg",
+    image: "assets/ramadan7.jpg",
     alt: "Food gift baskets"
   }
 ];
@@ -591,7 +591,7 @@ function ImpactSection() {
             <div className="flex items-baseline">
               <span 
                 className="text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter text-transparent bg-clip-text bg-cover bg-center drop-shadow-2xl select-none"
-                style={{ backgroundImage: `url('/assets/ramadan8.jpg')` }}
+                style={{ backgroundImage: `url('assets/ramadan8.jpg')` }}
               >
                 15K
               </span>
@@ -605,7 +605,7 @@ function ImpactSection() {
             <div className="flex items-baseline">
               <span 
                 className="text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter text-transparent bg-clip-text bg-cover bg-center drop-shadow-2xl select-none"
-                style={{ backgroundImage: `url('/assets/comunity1.jpeg')` }}
+                style={{ backgroundImage: `url('assets/comunity1.jpeg')` }}
               >
                 500
               </span>
@@ -619,7 +619,7 @@ function ImpactSection() {
             <div className="flex items-baseline">
               <span 
                 className="text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter text-transparent bg-clip-text bg-cover bg-center drop-shadow-2xl select-none"
-                style={{ backgroundImage: `url('/assets/eid11.jpg')` }}
+                style={{ backgroundImage: `url('assets/eid11.jpg')` }}
               >
                 40
               </span>
@@ -633,7 +633,7 @@ function ImpactSection() {
             <div className="flex items-baseline">
               <span 
                 className="text-6xl md:text-8xl lg:text-[7.5rem] font-black tracking-tighter text-transparent bg-clip-text bg-cover bg-center drop-shadow-2xl select-none"
-                style={{ backgroundImage: `url('/assets/young%20vulnteers.jpeg')` }}
+                style={{ backgroundImage: `url('assets/young%20vulnteers.jpeg')` }}
               >
                 25K
               </span>
@@ -691,21 +691,21 @@ function ServicesSection() {
       icon: <Brain size={18} className="text-brand-secondary" />,
       title: "Clinical Counselling",
       desc: "Faith-sensitive therapy for individuals, couples, and families.",
-      img: "/assets/Counselling image.jpg",
+      img: "assets/Counselling image.jpg",
       link: "/counselling"
     },
     {
       icon: <Heart size={18} className="text-brand-secondary" />,
       title: "Food Security",
       desc: "Discreet, dignified food bank and emergency support.",
-      img: "/assets/Food Security images.hero.jpg",
+      img: "assets/Food Security images.hero.jpg",
       link: "/get-help"
     },
     {
       icon: <Users size={18} className="text-brand-secondary" />,
       title: "Community Programs",
       desc: "Youth mentorship, seniors connection, and family support.",
-      img: "/assets/comunity1.jpeg",
+      img: "assets/comunity1.jpeg",
       link: "/programs"
     }
   ];
@@ -756,7 +756,7 @@ function CTASection() {
       <div className="absolute inset-0 z-0">
         <motion.img 
           style={{ y, scale, opacity }}
-          src={getImageUrl("/assets/vulnteering%20team.jpg", 2000)} 
+          src={getImageUrl("assets/vulnteering%20team.jpg", 2000)} 
           alt="Community Support" 
           loading="lazy"
           className="w-full h-[130%] object-cover object-center -top-[15%] relative origin-center"
@@ -807,26 +807,26 @@ function CTASection() {
 
 function TrustStrip() {
   const partners = [
-    { name: "City of Ottawa", img: "/logos/Logos/City of Ottawa.jpg", className: "mix-blend-multiply" },
-    { name: "Islamic Relief", img: "/logos/Logos/Islamic-Relief.jpg", className: "mix-blend-multiply" },
-    { name: "National Zakat Foundation", img: "/logos/Logos/National Zakat Foundation.png" },
-    { name: "Human Concern International", img: "/logos/Logos/Human-Concern-Internationa.png" },
-    { name: "Sadaqa Food Bank", img: "/logos/Logos/Sadaqa-food-bank.webp" },
-    { name: "BGC Ottawa", img: "/logos/Logos/bgc-ottawa.png", className: "invert brightness-0" },
-    { name: "Youth Services Bureau", img: "/logos/Logos/youth-services-Foundation.png" },
-    { name: "Assunnah Muslims Association", img: "/logos/Logos/Assunnah Muslims Associatio.png.jpg", className: "mix-blend-multiply" },
-    { name: "Britannia Woods", img: "/logos/Logos/Britiannia-Woods.webp" },
-    { name: "Jami Oma", img: "/logos/Logos/Jami-Oma.webp" },
-    { name: "Kanata Muslims Association", img: "/logos/Logos/Kanata-Muslims-Associatio.jpg", className: "mix-blend-multiply" },
-    { name: "Masjid Bilal", img: "/logos/Logos/Masjid-Bilal.gif" },
-    { name: "Muslim Link", img: "/logos/Logos/Muslim-Link.png" },
-    { name: "Tarbiyah Learning", img: "/logos/Logos/Tarbuyah.Learning..png" },
-    { name: "Children's Aid Society of Ottawa", img: "/logos/Logos/The-children-and Society-of-Ottwa.jpg", className: "mix-blend-multiply" },
-    { name: "Islam Care Centre", img: "/logos/Logos/cropped-Islam-care-Centre.png" },
-    { name: "Ottawa Muslim Association", img: "/logos/Logos/ottawa-muslim-association.jpg", className: "mix-blend-multiply" },
-    { name: "Penny Appeal", img: "/logos/Logos/penny-appea.jpg", className: "mix-blend-multiply" },
-    { name: "Pinecrest-Queensway", img: "/logos/Logos/pinerest-queensway.jpg", className: "mix-blend-multiply" },
-    { name: "Qatar Foundation", img: "/logos/Logos/qatar-foundation.jpg", className: "mix-blend-multiply" }
+    { name: "City of Ottawa", img: "logos/Logos/City of Ottawa.jpg", className: "mix-blend-multiply" },
+    { name: "Islamic Relief", img: "logos/Logos/Islamic-Relief.jpg", className: "mix-blend-multiply" },
+    { name: "National Zakat Foundation", img: "logos/Logos/National Zakat Foundation.png" },
+    { name: "Human Concern International", img: "logos/Logos/Human-Concern-Internationa.png" },
+    { name: "Sadaqa Food Bank", img: "logos/Logos/Sadaqa-food-bank.webp" },
+    { name: "BGC Ottawa", img: "logos/Logos/bgc-ottawa.png", className: "invert brightness-0" },
+    { name: "Youth Services Bureau", img: "logos/Logos/youth-services-Foundation.png" },
+    { name: "Assunnah Muslims Association", img: "logos/Logos/Assunnah Muslims Associatio.png.jpg", className: "mix-blend-multiply" },
+    { name: "Britannia Woods", img: "logos/Logos/Britiannia-Woods.webp" },
+    { name: "Jami Oma", img: "logos/Logos/Jami-Oma.webp" },
+    { name: "Kanata Muslims Association", img: "logos/Logos/Kanata-Muslims-Associatio.jpg", className: "mix-blend-multiply" },
+    { name: "Masjid Bilal", img: "logos/Logos/Masjid-Bilal.gif" },
+    { name: "Muslim Link", img: "logos/Logos/Muslim-Link.png" },
+    { name: "Tarbiyah Learning", img: "logos/Logos/Tarbuyah.Learning..png" },
+    { name: "Children's Aid Society of Ottawa", img: "logos/Logos/The-children-and Society-of-Ottwa.jpg", className: "mix-blend-multiply" },
+    { name: "Islam Care Centre", img: "logos/Logos/cropped-Islam-care-Centre.png" },
+    { name: "Ottawa Muslim Association", img: "logos/Logos/ottawa-muslim-association.jpg", className: "mix-blend-multiply" },
+    { name: "Penny Appeal", img: "logos/Logos/penny-appea.jpg", className: "mix-blend-multiply" },
+    { name: "Pinecrest-Queensway", img: "logos/Logos/pinerest-queensway.jpg", className: "mix-blend-multiply" },
+    { name: "Qatar Foundation", img: "logos/Logos/qatar-foundation.jpg", className: "mix-blend-multiply" }
   ];
 
   // Duplicate the array multiple times to create a seamless infinite loop

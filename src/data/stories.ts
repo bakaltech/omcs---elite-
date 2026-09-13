@@ -8,7 +8,7 @@ export const storiesData = [
     title: "Ensuring No One Celebrates Eid Alone",
     quote: "These programs remind people they are not forgotten.",
     fullText: "During the Eid al-Adha Food Hamper event, volunteers prepared food packages for families who might otherwise go without a proper celebration. Each hamper contained groceries to help families prepare festive meals at home.\n\nFor seniors living alone and families experiencing hardship, the initiative meant they could still experience the joy of Eid. \"These programs remind people they are not forgotten,\" said one organizer. \"Eid is about sacrifice, generosity, and caring for one another.\" Through community donations and volunteer efforts, hundreds of families are able to celebrate Eid with dignity each year.",
-    img: "/assets/Eidkits.jpg",
+    img: "assets/Eidkits.jpg",
     date: "June 2024",
     category: "Food Programs"
   },
@@ -30,7 +30,7 @@ export const storiesData = [
     title: "Delivering Hope During Ramadan",
     quote: "Ramadan is supposed to be peaceful. This helped us focus on faith and family.",
     fullText: "During Ramadan, many families struggle with iftar costs. OMCS volunteers delivered essential groceries...\n\nFor single father Ahmed, the support lifted a heavy burden. \"Ramadan is supposed to be peaceful. This helped us focus on faith and family.\"",
-    img: "/assets/ramadan7.jpg",
+    img: "assets/ramadan7.jpg",
     date: "March 2024",
     category: "Food Programs"
   },

@@ -10,15 +10,15 @@ export function Resources() {
   const [activeCategory, setActiveCategory] = useState("All");
 
   const partners = [
-    { name: "City of Ottawa", logo: "/logos/Logos/City%20of%20Ottawa.jpg" },
-    { name: "BGC Ottawa", logo: "/logos/Logos/bgc-ottawa.png" },
-    { name: "NZF Canada", logo: "/logos/Logos/National%20Zakat%20Foundation.png" },
-    { name: "CAS Ottawa", logo: "/logos/Logos/The-children-and%20Society-of-Ottwa.jpg" },
-    { name: "Tarbiyah Learning", logo: "/logos/Logos/Tarbuyah.Learning..png" },
-    { name: "Human Concern", logo: "/logos/Logos/Human-Concern-Internationa.png" },
-    { name: "PQCHC", logo: "/logos/Logos/pinerest-queensway.jpg" },
-    { name: "Islamic Relief", logo: "/logos/Logos/Islamic-Relief.jpg" },
-    { name: "Muslim Link", logo: "/logos/Logos/Muslim-Link.png" }
+    { name: "City of Ottawa", logo: "logos/Logos/City%20of%20Ottawa.jpg" },
+    { name: "BGC Ottawa", logo: "logos/Logos/bgc-ottawa.png" },
+    { name: "NZF Canada", logo: "logos/Logos/National%20Zakat%20Foundation.png" },
+    { name: "CAS Ottawa", logo: "logos/Logos/The-children-and%20Society-of-Ottwa.jpg" },
+    { name: "Tarbiyah Learning", logo: "logos/Logos/Tarbuyah.Learning..png" },
+    { name: "Human Concern", logo: "logos/Logos/Human-Concern-Internationa.png" },
+    { name: "PQCHC", logo: "logos/Logos/pinerest-queensway.jpg" },
+    { name: "Islamic Relief", logo: "logos/Logos/Islamic-Relief.jpg" },
+    { name: "Muslim Link", logo: "logos/Logos/Muslim-Link.png" }
   ];
 
   const categories = ["All", "Mental Health", "Food & Basic Needs", "Housing", "Mosques & Community", "Crisis Support"];
