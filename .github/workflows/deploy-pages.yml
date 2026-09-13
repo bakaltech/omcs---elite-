@@ -45,3 +45,5 @@ jobs:
       - name: Deploy
         id: deployment
         uses: actions/deploy-pages@v4
+        # Keep deployment isolated from the build job so Pages can publish the
+        # latest artifact after any previous deployment has finished.
