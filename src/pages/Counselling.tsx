@@ -3,6 +3,9 @@ import { Calendar, MapPin, Languages, Users, BookOpen, HeartPulse, HeartHandshak
 import { ASSETS, getImageUrl } from '../assets';
 import { Link } from 'react-router-dom';
 import { motion, AnimatePresence } from 'motion/react';
+const samoonImage = new URL('../assets/Samoon Tasmim.jpg', import.meta.url).href;
+const berakImage = new URL('../assets/Berak Hussain.jpeg', import.meta.url).href;
+const buraidahImage = new URL('../assets/Buraidah Razack.jpg', import.meta.url).href;
 
 // Hero Section
 function CounsellingHero() {
@@ -52,7 +55,7 @@ const therapists = [
   {
     name: "Samoon Tasmim",
     title: "MA, PhD, RP · Program Advisor",
-    image: "assets/Samoon Tasmim.jpg",
+    image: samoonImage,
     speaks: "English, Pashto, Dari/Farsi, Urdu/Hindi",
     worksWith: "teens, adults, individuals, couples, families",
     modalities: ["Narrative", "Psychodynamic", "Trauma-informed", "EFT", "Attachment-based", "Schema therapy"],
@@ -63,7 +66,7 @@ const therapists = [
   {
     name: "Berak Hussain",
     title: "BA Honors, MEd, RP",
-    image: "assets/Berak Hussain.jpeg",
+    image: berakImage,
     speaks: "English, Arabic, French",
     worksWith: "Teens (17+), individuals, families, groups",
     modalities: ["CBT", "Attachment-based", "Culturally-sensitive", "Emotion-focused", "Existential", "Family systems", "Humanistic", "Integrative", "Motivational interviewing", "Multicultural", "Positive psychology", "Strength-based", "Trauma-focused"],
@@ -74,7 +77,7 @@ const therapists = [
   {
     name: "Buraidah Razack",
     title: "BA, MSW (in progress) · Social worker in training",
-    image: "assets/Buraidah Razack.jpg",
+    image: buraidahImage,
     speaks: "English, Thai, Arabic (beginner)",
     worksWith: "children, teens, adults, families",
     modalities: ["Transactional analysis", "Compassion-focused", "Culturally-sensitive", "Faith-centered", "Integrative", "Motivational interviewing", "Multicultural", "Narrative", "Person-centered", "Psychodynamic", "Strength-based", "Trauma-focused"],

@@ -1,5 +1,8 @@
 import { useState, useEffect, useRef } from 'react';
 import { ArrowRight, Heart, MessageSquare, Users, ChevronLeft, ChevronRight, Plus, Minus, Globe, Brain, Landmark, ShieldCheck, CircleDashed, Target } from 'lucide-react';
+const samoonImage = new URL('../assets/Samoon Tasmim.jpg', import.meta.url).href;
+const berakImage = new URL('../assets/Berak Hussain.jpeg', import.meta.url).href;
+const buraidahImage = new URL('../assets/Buraidah Razack.jpg', import.meta.url).href;
 import { Link } from 'react-router-dom';
 import { ASSETS, getImageUrl } from '../assets';
 import { AnimatePresence, motion, useScroll, useTransform } from 'motion/react';
@@ -340,19 +343,19 @@ function EliteTrustSection() {
       name: "Samoon Tasmim",
       credentials: "MA, PhD, RP",
       quote: "Healing starts sooner when care feels safe, steady, and grounded in real cultural understanding.",
-      image: "assets/Samoon Tasmim.jpg"
+      image: samoonImage
     },
     {
       name: "Berak Hussain",
       credentials: "MSW, RSW",
       quote: "We don't just treat symptoms; we honor your story, your faith, and your family's journey.",
-      image: "assets/Berak Hussain.jpeg"
+      image: berakImage
     },
     {
       name: "Buraidah Razack",
       credentials: "MSc, CCC",
       quote: "True therapy provides a space where you don't have to translate your culture before you can start healing.",
-      image: "assets/Buraidah Razack.jpg"
+      image: buraidahImage
     }
   ];
 
