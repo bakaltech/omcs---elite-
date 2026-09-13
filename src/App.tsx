@@ -27,7 +27,7 @@ import { Events } from './pages/Events';
 export default function App() {
   return (
     <HelmetProvider>
-      <BrowserRouter>
+      <BrowserRouter basename="/omcs---elite-/">
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
